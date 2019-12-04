@@ -1,0 +1,20 @@
+load("@fbcode_macros//build_defs:cpp_binary.bzl", "cpp_binary")
+
+cpp_binary(
+    name = "faker",
+    srcs = [
+        "binlog.c",
+        "faker.c",
+        "queue.c",
+        "slave.c",
+    ],
+    compiler_flags = ["-Wno-deprecated-declarations"],
+    deps = [
+    ],
+    external_deps = [
+        "glib",
+        "zstd",
+        ("glib", None, "gthread"),
+        ("mysql", None, "fbmysqlclient"),
+    ],
+)
